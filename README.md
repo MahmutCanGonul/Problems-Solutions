@@ -8,3 +8,23 @@ A child is playing a cloud hopping game. In this game, there are sequentially nu
 There is an array of clouds, c and an energy level e=100 . The character starts from c[0]  and uses  1 unit of energy to make a jump of size k  to cloud c[(i+k)%c.size()]. If it lands on a thundercloud, c[i]=1 , its energy (e) decreases by 2 additional units. The game ends when the character lands back on cloud .
 
 Given the values of n, k, and the configuration of the clouds as an array c, determine the final value of e after the game ends.
+
+
+
+💣Solution-1:
+
+
+               int jumpingOnClouds(vector<int> c, int k) 
+                {
+                   int level =100;
+                   int i = k % c.size();
+                   level-= c[i] * 2 + 1; 
+                   while(i!=0)
+                   {
+                   i=(i+k)%c.size();
+                   level-=c[i] * 2 + 1;
+        
+                    }  
+                    return level;
+      
+                 }
