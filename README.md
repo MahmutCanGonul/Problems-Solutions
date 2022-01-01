@@ -28,3 +28,79 @@ Given the values of n, k, and the configuration of the clouds as an array c, det
                     return level;
       
                  }
+
+
+Problem-2:
+
+  The distance between two array values is the number of indices between them. Given a, find the minimum distance between any pair of equal elements in the array. If no such value exists, return -1.
+  
+Example: 
+
+ Input:
+                 
+                 STDIN           Function
+                  -----           --------
+                   6               arr[] size n = 6
+                   7 1 3 4 1 7     arr = [7, 1, 3, 4, 1, 7]
+  
+  Output:
+  
+  
+  
+                    3
+                    
+                    
+ 💣Solution-2:
+ 
+ 
+ 
+      int minimumDistances(vector<int> a) {
+     int take[a.size()];
+     for(int i=0; i<a.size();i++)
+          take[i]=-1;
+     for(int i=0; i<a.size();i++)
+     {
+    
+      for(int j=0; j<a.size();j++)
+      {
+         if(i!=j)
+         {
+             if(a[i] == a[j])
+             {
+                 int sum  = i-j;
+                 int result = abs(sum);
+                  take[i] =result;
+             }
+         }    
+      }   
+      
+         
+     }
+      int n = sizeof(take) / sizeof(take[0]);
+ 
+    
+    sort(take, take + n);
+    int result=-1;
+    for(int i=0; i<a.size();i++)
+    {
+        if(take[i]!=-1)
+        {
+            result=take[i];
+            break;
+        }
+            
+    } 
+   
+     return result;
+         
+     }
+
+
+
+
+
+
+
+
+
+
