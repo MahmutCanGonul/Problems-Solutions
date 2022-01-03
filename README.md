@@ -138,5 +138,110 @@ Complete the code in your editor so that it prints appropriate error messages, s
                      
 
 
+Problem-4:
 
+🍎The problem is An English text needs to be encrypted using the following encryption scheme.
+First, the spaces are removed from the text. Let  be the length of this text.
+Then, characters are written into a grid, whose rows and columns have the following constraints:
+ 
+ Example-1:
+ 
+         INPUT:   haveaniceday
+         OUTPUT: hae and via ecy
+         
+         
+Example-2:
+         
+          INPUT:   feedthedog    
+         OUTPUT: fto ehg ee dd
+         
+         
+         
+ 💣Solution-4:
+ 
+ 
+                              string encryption(string s) {
+                             double result = sqrt(s.length());
+   
+                               int row = int(result);
+                               int column = int(result)+1;
+   
+   
+                                 if((row*column)<s.length())
+                                 {
+                                  row++;
+                                  }
+   
+                                if(result == int(result))
+                                {
+                                row = int(result);
+                                column = int(result);
+                                }
+   
+   
+   
+                              cout<<row<<endl;
+                              cout<<column<<endl;
+                              string words[row];
+                               string word="";
+                              int count=0;
+                              int count_column=0;
+                              for(int i=0; i<s.length();i++)
+                              {
+                                word = word+s[i];
+                                  count_column++;
+                                  words[count] = word;
+                                 if(count_column == column)
+                                  {
+                                  words[count]=word;
+                                  word="";
+                                  count++;
+                                  count_column=0;
+                                   }
+       
+                               if(count == row)
+                                     break;
+        
+                               }
+                           string mainResult="";
+                           int n=0;
+                           int n2=0;
+                           for(int i=0; i<row;i++)
+                                 cout<<words[i]<<endl;
+   
+                            while(true)
+                             {
+                               mainResult = mainResult + words[n][n2];
+                                 n++;
+                                if(n ==row)
+                                 {
+                                   n=0;
+                                   n2++; 
+                                    mainResult = mainResult + " ";
+                                  }
+      
+                              if(n2==column)
+                                   break;    
+                               }
+                             string mainResult2="";
+                             for(int i=0; i<mainResult.length();i++)
+                              {
+                                if((mainResult[i]>='a' && mainResult[i]<='z') || (mainResult[i]>='A' && mainResult[i]<='Z') || mainResult[i] == ' ')
+                                 {
+                                      mainResult2 = mainResult2 + mainResult[i];
+                                  }
+                               }
+   
+  
+                      return mainResult2;   
+                  }
+ 
+         
+         
+ 
+  
+
+ 
+
+ 
 
