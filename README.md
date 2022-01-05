@@ -242,7 +242,7 @@ Example-2:
   
 Problem-5: 
 
-You are the benevolent ruler of Rankhacker Castle, and today you're distributing bread. Your subjects are in a line, and some of them already have some loaves. Times are hard and your castle's food stocks are dwindling, so you must distribute as few loaves as possible according to the following rules:
+🍎You are the benevolent ruler of Rankhacker Castle, and today you're distributing bread. Your subjects are in a line, and some of them already have some loaves. Times are hard and your castle's food stocks are dwindling, so you must distribute as few loaves as possible according to the following rules:
 
 Every time you give a loaf of bread to some person , you must also give a loaf of bread to the person immediately in front of or behind them in the line (i.e., persons i+1  or i-1).
 After all the bread is distributed, each person must have an even number of loaves.
@@ -287,5 +287,44 @@ Solution-5:
                  return result;
              }
 
- 
+
+Problem-6:
+
+🍎You wish to buy video games from the famous online video game store Mist.
+
+Usually, all games are sold at the same price,  dollars. However, they are planning to have the seasonal Halloween Sale next month in which you can buy games at a cheaper price. Specifically, the first game will cost  dollars, and every subsequent game will cost  dollars less than the previous one. This continues until the cost becomes less than or equal to  dollars, after which every game will cost  dollars. How many games can you buy during the Halloween Sale?
+
+
+
+Solution-6:
+
+
+
+     int howManyGames(int p, int d, int m, int s) {
+    // Return the number of games you can buy
+    int sum=0;
+    int count=0;
+    while(true)
+    {
+    
+        sum+=p;
+        p-=d;
+        if(p<m)
+          p=m;
+        
+        if(sum > s)
+        {
+            sum = sum - p;
+            break;
+        }
+        count++;
+    }
+       
+       return count;
+       
+     }
+
+
+
+
 
