@@ -362,6 +362,150 @@ Solution-7:
 
 
 
+Problem-8:
+
+
+You will be given a square chess board with one queen and a number of obstacles placed on it. Determine how many squares the queen can attack.
+
+A queen is standing on an (n x n) chessboard. The chess board's rows are numbered from 1 to n, going from bottom to top. Its columns are numbered from  to , going from left to right. Each square is referenced by a tuple, (r,c), describing the row, r, and column, c, where the square is located.
+
+The queen is standing at position (rq,rc). In a single move, she can attack any square in any of the eight directions (left, right, up, down, and the four diagonals). In the diagram below, the green circles denote all the cells the queen can attack from (4,4):
+
+
+![image](https://user-images.githubusercontent.com/75094927/148538813-72d8ee56-a0f2-484e-a18a-e7f9b9ea510f.png)
+
+🍎Function Description
+
+Complete the queensAttack function in the editor below.
+
+queensAttack has the following parameters:
+- int n: the number of rows and columns in the board
+- nt k: the number of obstacles on the board
+- int r_q: the row number of the queen's position
+- int c_q: the column number of the queen's position
+- int obstacles[k][2]: each element is an array of  integers, the row and column of an obstacle
+
+
+
+
+Solution-8:
+
+
+
+              map<pair<int,int>,int> q;
+
+
+      int dl(int i1,int i2,int n){
+    int ret=0;
+    while(i1<n && i2>1){
+        i1++;
+        i2--;
+        if(q[{i1,i2}]) break;
+        ret++;
+    }
+    return ret;
+    }
+    int up(int i1,int i2){
+    int ret=0;
+    while(i1>1){
+        i1--;
+        if(q[{i1,i2}]) break;
+        ret++;
+    }
+    return ret;
+    }
+
+    int dw(int i1,int i2,int n){
+    int ret=0;
+    while(i1<n){
+        i1++;
+        if(q[{i1,i2}]) break;
+        ret++;
+    }
+    return ret;
+    }
+
+    int lf(int i1,int i2){
+    int ret=0;
+    while(i2>1){
+        i2--;
+        if(q[{i1,i2}]) break;
+        ret++;
+    }
+    return ret;
+   }
+
+    int rg(int i1,int i2,int n){
+    int ret=0;
+    while(i2<n){
+        i2++;
+        if(q[{i1,i2}]) break;
+        ret++;
+    }
+    return ret;
+    }
+
+    int ur(int i1,int i2,int n){
+    int ret=0;
+    while(i1>1 && i2<n){
+        i1--;
+        i2++;
+        if(q[{i1,i2}]) break;
+        ret++;
+    }
+    return ret;
+    }
+
+    int ul(int i1,int i2){
+    int ret=0;
+    while(i1>1 && i2>1){
+        i1--;
+        i2--;
+        if(q[{i1,i2}]) break;
+        ret++;
+    }
+    return ret;
+    }
+
+    int dr(int i1,int i2,int n){
+    int ret=0;
+    while(i1<n && i2<n){
+        i1++;
+        i2++;
+        if(q[{i1,i2}]) break;
+        ret++;
+    }
+    return ret;
+    }
+
+
+
+
+
+    /*
+    * Complete the 'queensAttack' function below.
+    *
+    * The function is expected to return an INTEGER.
+     * The function accepts following parameters:
+     *  1. INTEGER n
+     *  2. INTEGER k
+     *  3. INTEGER r_q
+    *  4. INTEGER c_q
+    *  5. 2D_INTEGER_ARRAY obstacles
+    */
+
+         int queensAttack(int n, int k, int r_q, int c_q, vector<vector<int>> obstacles) {
+         int sum=0;
+         for(int i=0; i<k;i++)
+         {
+        vector<int> get_obs = obstacles[i];
+        q[{get_obs[0],get_obs[1]}] =1;
+        }
+        sum= up(r_q,c_q)+dw(r_q,c_q,n)+lf(r_q,c_q)+rg(r_q,c_q,n)+ur(r_q,c_q,n)+ul(r_q,c_q)+dl(r_q,c_q,n)+dr(r_q,c_q,n);     
+         
+       return sum;
+        }
+
 
 
 
