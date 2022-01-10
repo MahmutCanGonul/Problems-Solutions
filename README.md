@@ -582,9 +582,43 @@ int[m]: the player's rank after each new score
     }
 
 
+Problem-11:
 
 
+ Given a sequence of integers a, a triplet (a[i],a[j],a[k])  is beautiful if:
+
+🍎 i<j<k
+🍎 a[j]-a[i] = a[k]-a[j]=d
+         
+
+Given an increasing sequenc of integers and the value of , count the number of beautiful triplets in the sequence.
+
+Function Description
+
+Complete the beautifulTriplets function in the editor below.
+
+beautifulTriplets has the following parameters:
+
+int d: the value to match
+int arr[n]: the sequence, sorted ascending
+Returns
+
+int: the number of beautiful triplets
+         
+         
+         
+💣Solution-11:
 
 
+                                                            
+       
+ 
+         
+         
+         
+         
+         
+         
+ 
 
 
