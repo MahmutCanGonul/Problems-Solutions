@@ -611,7 +611,50 @@ int: the number of beautiful triplets
 
 
                                                             
+                     int beautifulTriplets(int d, vector<int> arr) 
+                     
+                     {
+                     int count;
+                    int result=0;
+                      int sum=0;
+                     int temp=0;
+                      bool isNot=false;
+                      for(int i=0; i<arr.size();i++)
+                     {
+                       count=0;
+                       isNot=false;
+                       for(int j=0; j<arr.size();j++)
+                       {
+                         if(i<j)
+                         {
+                           if(!isNot)
+                           {
+                                sum = arr[j] - arr[i];
+                           }
+                           else
+                           {
+                                sum = arr[j] - arr[temp];
+                           }
+            
+                           if(sum==d)
+                           {
+                            temp=j;
+                            count++;
+                            isNot=true;
+                           }       
+             
+                       }
+           
+                     if(count==2){result++;  break;}
+             
+                   }
        
+        
+                }
+   
+              return result;
+
+           }
  
          
          
