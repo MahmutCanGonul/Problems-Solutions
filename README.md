@@ -659,9 +659,68 @@ int: the number of beautiful triplets
          
          
          
+Problem-12:
+
+There is a large pile of socks that must be paired by color. Given an array of integers representing the color of each sock, determine how many pairs of socks with matching colors there are.
+
+Example
+n=9
+ar = [10,20,20,10,10,30,50,10,20]
+
+Output = 3
+
+![image](https://user-images.githubusercontent.com/75094927/148952055-5cf0b7be-f6ab-44bb-b1cb-00276e86333d.png)
+
+
+
+There is one pair of color 1 and one of color 2. There are three odd socks left, one of each color. The number of pairs is 2.
+
+Function Description
+
+Complete the sockMerchant function in the editor below.
+
+sockMerchant has the following parameter(s):
+
+int n: the number of socks in the pile
+int ar[n]: the colors of each sock
+Returns
+
+int: the number of pairs
          
          
          
- 
+💣Solution-12:
+                 
+    int sockMerchant(int n, vector<int> ar) {
+    srand (time(NULL));    
+    int result=0;
+       
+    for(int i=0; i<ar.size();i++)
+    {
+       for(int j=0; j<ar.size();j++)
+       {
+           if(i!=j)
+           {
+               if(ar[i] > 0)
+               {
+                 if(ar[i] == ar[j])
+                 {
+                     ar[i] = (rand()%100000)*-1;
+                     ar[j] = (rand()%100000)*-1;
+                     result++;
+                     break;
+                 }
+               }
+           }
+       }
+    }
+     
+    return result;
+    }
+
+
+
+
+
 
 
