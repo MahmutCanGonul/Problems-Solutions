@@ -720,6 +720,40 @@ int: the number of pairs
 
 
 
+Problem-13:
+
+🍎Formula: (shared/2) *3 
+ 
+The progression is shown above. The cumulative number of likes on the  day is .
+
+Function Description
+
+Complete the viralAdvertising function in the editor below.
+
+viralAdvertising has the following parameter(s):
+
+int n: the day number to report
+Returns
+
+int: the cumulative likes at that day
+
+
+
+Solution-13:
+
+     int viralAdvertising(int n) {
+     int first_day = 5;
+     int result= int(first_day/2);
+     for(int i=0; i<n-1;i++)
+     {
+         first_day = int(first_day/2) * 3;
+         result+=int((first_day/2));
+     }
+     
+     
+      return result;
+     
+     }
 
 
 
