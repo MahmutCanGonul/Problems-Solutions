@@ -739,7 +739,7 @@ int: the cumulative likes at that day
 
 
 
-Solution-13:
+💣Solution-13:
 
      int viralAdvertising(int n) {
      int first_day = 5;
