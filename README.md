@@ -820,3 +820,97 @@ int: the number of beautiful days in the range
       
     }
 
+
+Problem-15:  
+
+
+David has several containers, each with a number of balls in it. He has just enough containers to sort each type of ball he has into its own container. David wants to sort the balls using his sort method.
+
+David wants to perform some number of swap operations such that:
+
+Each container contains only balls of the same type.
+No two balls of the same type are located in different containers.
+
+Example
+
+containers = [[1,4],[2,3]]
+
+David has n=2  containers and  different 2 types of balls, both of which are numbered from 0 to n-1=1. The distribution of ball types per container are shown in the following diagram.
+
+![image](https://user-images.githubusercontent.com/75094927/149766461-e9fb6151-0a52-4805-af86-25313db6c642.png)
+
+In a single operation, David can swap two balls located in different containers.
+
+The diagram below depicts a single swap operation:
+
+![image](https://user-images.githubusercontent.com/75094927/149766480-d8180e53-f4d4-45db-b1b7-38f2a0e83193.png)
+
+In this case, there is no way to have all green balls in one container and all red in the other using only swap operations. Return Impossible.
+
+You must perform  queries where each query is in the form of a matrix, . For each query, print Possible on a new line if David can satisfy the conditions above for the given matrix. Otherwise, print Impossible.
+
+Function Description
+
+Complete the organizingContainers function in the editor below.
+
+organizingContainers has the following parameter(s):
+
+int containter[n][m]: a two dimensional array of integers that represent the number of balls of each color in each container
+Returns
+
+string: either Possible or Impossible
+
+
+
+💣Solution-15:
+
+
+          string organizingContainers(vector<vector<int>> container)
+          {
+          int n = container.size();
+          int a[n];
+          int b[n];
+          for(int i=0; i<n;i++){a[i]=0; b[i]=0;}
+          
+          
+          for(int i=0; i<n; i++)
+          {
+           for(int j=0; j<n; j++)
+            {
+              a[i] += container[i][j];
+              b[j] += container[i][j];
+            }
+         }
+         
+         string pts = "Possible";
+         for(int i=0;i<n;i++)
+         {
+           int j=0;
+           for(j=i;j<n;j++)
+           {
+              if(a[i] == b[j])
+              {
+                int temp = b[j];
+                b[j] = b[i];
+                b[i] = temp;
+                break;
+              }
+           }
+    
+           if(j==n)
+           {
+              pts = "Impossible";
+              break;
+           }
+       }
+         
+         
+         
+         return pts;
+         
+     }
+
+
+
+
+
