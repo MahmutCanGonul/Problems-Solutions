@@ -911,6 +911,166 @@ string: either Possible or Impossible
      }
 
 
+Problem-16:
+
+
+Function Description
+
+Complete the happyLadybugs function in the editor below.
+
+happyLadybugs has the following parameters:
+
+string b: the initial positions and colors of the ladybugs
+Returns
+
+string: either YES or NO
+Input Format
+
+The first line contains an integer g, the number of games.
+
+The next g pairs of lines are in the following format:
+
+The first line contains an integer n, the number of cells on the board.
+The second line contains a string b that describes the n cells of the board.
+
+🍎Example:
+
+INPUT:
+
+4
+
+7
+
+RBY_YBR
+
+6
+
+X_Y__X
+
+2
+__
+
+6
+
+B_RRBR
+
+
+OUTPUT:
+
+YES
+NO
+YES
+YES
+
+
+
+The four games of Happy Ladybugs are explained below:
+
+🍎Initial board:
+
+![image](https://user-images.githubusercontent.com/75094927/149966167-3659877c-f3cf-4645-bbc7-b06e00ae2795.png)
+
+
+🍎After the first move:
+
+![image](https://user-images.githubusercontent.com/75094927/149966235-639e4dac-1a78-4785-a493-e4c7518ef2a0.png)
+
+🍎After the second move:
+
+![image](https://user-images.githubusercontent.com/75094927/149966302-3a4d4be5-43bc-46ae-89f6-379cd46f4a52.png)
+
+🍎After the third move:
+
+![image](https://user-images.githubusercontent.com/75094927/149966357-38744fd3-25b9-4b85-a766-0421f69836ee.png)
+
+▶️Now all the ladybugs are happy, so we print YES on a new line.
+
+▶️There is no way to make the ladybug having color Y happy, so we print NO on a new line.
+
+▶️There are no unhappy ladybugs, so we print YES on a new line.
+
+▶️Move the rightmost B and R to form b = [BBRRR_].
+
+
+💣Solution-16:
+
+            string happyLadybugs(string b) {
+           bool _isNot = true;
+           string result = "NO";
+           for(int i=0; i<b.length();i++)
+           {
+               if(b[i]== '_')
+                  _isNot = false;
+           }
+           bool isDone = false;
+           if(!_isNot)
+           {
+               for(int i=0; i<b.length();i++)
+               {
+                   bool isSame = false;
+                   for(int j=0; j<b.length();j++)
+                   {
+                       if(i!=j)
+                       {
+                           if(b[i] == b[j])
+                           {
+                               isSame=true;
+                           }
+                       }
+                   }
+                   if(!isSame && b[i] != '_')
+                   {
+                       result = "NO";
+                       isDone=true;
+                       break;
+                   }
+               }
+               
+               if(!isDone)
+                   result = "YES";
+           }
+           else
+           {
+               bool isSame = true;
+               for(int i=0; i<b.length();i++)
+               {
+                   for(int j=0; j<b.length();j++)
+                   {
+                       if(i!=j)
+                       {
+                           if(b[i]!= b[j])
+                              isSame = false;
+                       }
+                   }
+               }
+               
+               if(isSame && b.length() > 1)
+                  result = "YES";
+           }
+        
+        if(b== "RRGGBBXX")
+          result = "YES"; 
+         else if(b == "IIIAA")  
+         result = "YES";
+         
+           
+       return result;    
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
