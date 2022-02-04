@@ -1093,6 +1093,85 @@ Sorting the huge numbers with Vector
 
 
 
+Porblem-18:
+
+
+You are given a number of sticks of varying lengths. You will iteratively cut the sticks into smaller sticks, discarding the shortest pieces until there are none left. At each iteration you will determine the length of the shortest stick remaining, cut that length from each of the longer sticks and then discard all the pieces of that shortest length. When all the remaining sticks are the same length, they cannot be shortened so discard them.
+
+Given the lengths of  sticks, print the number of sticks that are left before each iteration until there are none left.
+
+
+Function Description
+
+Complete the cutTheSticks function in the editor below. It should return an array of integers representing the number of sticks before each cut operation is performed.
+
+cutTheSticks has the following parameter(s):
+
+int arr[n]: the lengths of each stick
+Returns
+
+int[]: the number of sticks after each iteration
+
+
+
+EX: 
+
+    INPUT:
+
+     STDIN           Function
+     -----           --------
+      6               arr[] size n = 6
+      5 4 4 2 2 8     arr = [5, 4, 4, 2, 2, 8]
+
+    OUTPUT:
+
+    6
+    4
+    2
+    1
+
+
+💣Solution-18:
+
+    vector<int> cutTheSticks(vector<int> arr) 
+    {
+     vector<int> arr2;
+     int len = arr.size();
+     int index = arr.size();
+     arr2.push_back(len);
+     while(true)
+     {
+            index--;
+            arr[index]-=1;
+            if(arr[index]==0)
+               len--;
+            if(index==0)
+            {
+                bool isSame=false;
+                for(int i=0; i<arr2.size();i++)
+                {
+                         if(arr2[i] == len)
+                           isSame = true;
+                }
+                
+                if(!isSame && len!=0)
+                    arr2.push_back(len);
+                
+                index = arr.size();
+                if(len <=1)
+                    break;
+            }
+            
+             
+            
+            
+     }
+     
+     return arr2;
+      
+     }
+
+
 
 
 
