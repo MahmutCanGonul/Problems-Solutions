@@ -1172,9 +1172,60 @@ EX:
      }
 
 
+Problem-19:
+
+Flatland is a country with a number of cities, some of which have space stations. Cities are numbered consecutively and each has a road of 1km length connecting it to the next city. It is not a circular route, so the first city doesn't connect with the last city. Determine the maximum distance from any city to its nearest space station.
+
+
+Function Description
+
+Complete the flatlandSpaceStations function in the editor below.
+
+flatlandSpaceStations has the following parameter(s):
+
+int n: the number of cities
+int c[m]: the indices of cities with a space station
+Returns
+- int: the maximum distance any city is from a space station
+
+Input:
+
+STDIN   Function
+
+-----   --------
+
+5 2     n = 5, c[] size m = 2
+
+0 4     c = [0, 4]
+
+
+Output:
+
+2
+
+
+![image](https://user-images.githubusercontent.com/75094927/152652426-6b3dde33-7289-4f7a-a9af-69c207cb3f68.png)
 
 
 
+🍎Solution-19:
 
-
+    int flatlandSpaceStations(int n, vector<int> c) {
+      sort(c.begin(),c.end());
+      int result=0;
+      int maxDistance = c[0];
+      for(int i = 1; i < c.size(); i++){
+        int distance = (c[i] - c[i-1]) / 2;
+        if(maxDistance < distance) 
+             maxDistance = distance;
+    }
+    n--;
+    int lastGap = n - c[c.size() - 1];
+    if(lastGap < maxDistance)
+        result = maxDistance;
+    if(lastGap > maxDistance)
+         result = lastGap;
+        
+     return result;     
+    }
 
