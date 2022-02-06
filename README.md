@@ -1229,3 +1229,72 @@ Output:
      return result;     
     }
 
+Problem-20:
+
+The previous challenges covered Insertion Sort, which is a simple and intuitive sorting algorithm with a running time of O(n^2). In these next few challenges, we're covering a divide-and-conquer algorithm called Quicksort (also known as Partition Sort). This challenge is a modified version of the algorithm that only addresses partitioning. It is implemented as follows:
+
+Function Description
+
+Complete the quickSort function in the editor below.
+
+quickSort has the following parameter(s):
+
+int arr[n]: arr[0] is the pivot element
+Returns
+
+int[n]: an array of integers as described above
+
+Input:
+
+     STDIN       Function
+     -----       --------
+      5           arr[] size n =5 
+     4 5 3 7 2   arr =[4, 5, 3, 7, 2]
+
+Output:
+ 
+     3 2 4 5 7
+     
+     
+💣Solution-20:
+
+
+    vector<int> quickSort(vector<int> arr) 
+    {
+       int i=0;
+       vector<int> result;
+       bool isSmaller=true;
+       while(true)
+       {
+           i++;
+          
+          if(isSmaller)
+          {
+               if(arr[0] > arr[i])
+                {
+                   result.push_back(arr[i]);
+                }   
+          }
+          
+          if(!isSmaller)
+          {
+              if(arr[0] < arr[i])
+              {
+                  result.push_back(arr[i]);
+              }
+          } 
+           if(!isSmaller && i == arr.size()-1)
+               break;
+           
+           if(i == arr.size()-1)
+           {
+               i=0;
+               isSmaller =false;
+               result.push_back(arr[0]);
+           }
+       }  
+       
+    return result;
+    }
+
+
