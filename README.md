@@ -1298,3 +1298,109 @@ Output:
     }
 
 
+
+
+Problem-21:
+
+
+A driver is driving on the freeway. The check engine light of his vehicle is on, and the driver wants to get service immediately. Luckily, a service lane runs parallel to the highway. It varies in width along its length.
+
+You will be given an array of widths at points along the road (indices), then a list of the indices of entry and exit points. Considering each entry and exit point pair, calculate the maximum size vehicle that can travel that segment of the service lane safely.
+
+
+![image](https://user-images.githubusercontent.com/75094927/154851988-9864d169-5fe8-43fc-a3d6-6621837ea261.png)
+
+
+Function Description
+
+Complete the serviceLane function in the editor below.
+
+serviceLane has the following parameter(s):
+
+int n: the size of the width array
+int cases[t][2]: each element contains the starting and ending indices for a segment to consider, inclusive
+
+Returns
+
+int[t]: the maximum width vehicle that can pass through each segment of the service lane described
+
+
+INPUT:
+
+     STDIN               Function
+
+     -----               --------
+
+      8 5                 n = 8, t = 5
+
+     2 3 1 2 3 2 3 3     width = [2, 3, 1, 2, 3, 2, 3, 3]
+
+     0 3                 cases = [[0, 3], [4, 6], [6, 7], [3, 5], [0, 7]]
+
+     4 6
+
+     6 7
+
+    3 5
+
+    0 7
+
+OUTPUT:
+
+    1
+    2
+    3
+    2
+    1
+
+
+🍎Solution-21:
+
+     int sorting_vector(vector<int> v)
+    {
+    sort(v.begin(), v.end());
+    return v[0];
+    }
+
+    vector<int> serviceLane(int n, vector<vector<int>> cases,vector<int> width) 
+    {
+       vector<int> result;
+       for(int i=0; i<cases.size();i++)
+       {
+             vector<int> insideCases = cases[i];
+             int width1,width2;
+             width1 = insideCases[0];
+             width2 = insideCases[insideCases.size()-1];
+             //int currentDifference = width2 - width1;
+             vector<int> currentVec;
+             while(width1 <= width2)
+             {
+                 currentVec.push_back(width[width1]);
+                 width1++;
+             }
+             result.push_back(sorting_vector(currentVec));
+             currentVec.clear();
+       }
+       return result;
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
