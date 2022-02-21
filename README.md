@@ -1489,15 +1489,94 @@ Explanition:
 
 
 
+Problem-23:
+
+NOTE: Using ASCII Values like  
+                     
+                      cout<<int('A')<<endl; ==> It is given to Ascii value of 'A' 
+
+In this challenge, you will determine whether a string is funny or not. To determine whether a string is funny, create a copy of the string in reverse e.g. . Iterating through each string, compare the absolute difference in the ascii values of the characters at positions 0 and 1, 1 and 2 and so on to the end. If the list of absolute differences is the same for both strings, they are funny.
+
+Determine whether a give string is funny. If it is, return Funny, otherwise return Not Funny.
+
+
+
+Function Description
+
+Complete the funnyString function in the editor below.
+
+funnyString has the following parameter(s):
+
+string s: a string to test
+Returns
+
+string: either Funny or Not Funny
+
+Input Format
+
+     STDIN   Function
+     -----   --------
+      2       q = 2
+     acxz    s = 'acxz'
+     bcxz    s = 'bcxz'
+
+
+Output:
+
+    Funny
+    Not Funny
 
 
 
 
+🍎Solution-23:
 
 
-
-
-
+    string funnyString(string s) {
+    vector<int> asciiValues;
+    //vector<int> reAsciiValues;
+    int reAsciiValues[s.length()];
+    int len = s.length();
+    for(int i=0; i<s.length();i++)
+    {
+        asciiValues.push_back(int(s[i]));
+        len--;
+        reAsciiValues[len] = asciiValues[i];
+    }
+    
+    vector<int> differences1;
+    vector<int> differences2;
+    for(int i=0; i<asciiValues.size();i++)
+    {
+        if(i!=asciiValues.size()-1)
+        {
+            int result = abs(asciiValues[i]-asciiValues[i+1]);
+            differences1.push_back(result);
+            /////////
+             int result2 = abs(reAsciiValues[i]-reAsciiValues[i+1]);
+             differences2.push_back(result2);
+        }
+       
+    }
+    
+    
+    string result = "Funny";
+    int index=0;
+    while(index!=differences1.size())
+    {
+        
+        if(differences1[index]!=differences2[index])
+        {
+            result = "Not Funny";
+            break;
+        }
+        index++;
+    }
+    
+    return result;
+    
+    
+    }
 
 
 
