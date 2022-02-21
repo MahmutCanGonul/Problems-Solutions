@@ -1386,8 +1386,105 @@ OUTPUT:
 
 
 
+Problem-22:  
+
+Lisa just got a new math workbook. A workbook contains exercise problems, grouped into chapters. Lisa believes a problem to be special if its index (within a chapter) is the same as the page number where it's located. The format of Lisa's book is as follows:
+
+There are n chapters in Lisa's workbook, numbered from 1 to n.
+The i chapter has arr[i] problems, numbered from 1 to arr[i].
+Each page can hold up to k problems. Only a chapter's last page of exercises may contain fewer than k problems.
+Each new chapter starts on a new page, so a page will never contain problems from more than one chapter.
+The page number indexing starts at 1.
+Given the details for Lisa's workbook, can you count its number of special problems?
 
 
+Note: See the diagram in the Explanation section for more details.
+
+Function Description
+
+Complete the workbook function in the editor below.
+
+workbook has the following parameter(s):
+
+int n: the number of chapters
+int k: the maximum number of problems per page
+int arr[n]: the number of problems in each chapter
+Returns
+- int: the number of special problems in the workbook
+
+Input: 
+
+
+           STDIN       Function
+           -----       --------
+           5 3         n = 5, k = 3
+           4 2 6 1 10  arr = [4, 2, 6, 1, 10]
+
+
+OUTPUT:
+              
+               4
+               
+               
+Explanition:
+
+
+![image](https://user-images.githubusercontent.com/75094927/154962011-28cb4f34-be5e-4251-ac6b-269b782f1c3e.png)
+
+
+
+
+🍎Solution-22:
+
+
+     int workbook(int n, int k, vector<int> arr) 
+    {
+      int result=0;
+      vector<vector<int>> blocks;
+      vector<int> block;
+      for(int i=0; i<arr.size();i++)
+      {
+        int problems = arr[i];
+        int index=0;
+        while(problems >= k)
+        {
+            problems-=k;
+            for(int j=0; j<k;j++)
+            {
+                block.push_back(index);
+                index++;
+            }
+            blocks.push_back(block);
+            block.clear();
+        }
+        for(int x =0; x<problems;x++)
+        {
+            block.push_back(index);
+            index++;
+            if(x == problems-1)
+                 blocks.push_back(block);
+        }
+        //blocks.push_back(block);
+        block.clear();   
+    }
+    
+    
+    for(int i=0; i<blocks.size();i++)
+    {
+         
+        for(int j=0; j<blocks[i].size();j++)
+        {
+            cout<<" "<<blocks[i][j];
+            if(blocks[i][j] == i)
+            {
+                result++;
+            }
+        }
+        cout<<"////////////////////////"<<endl;
+    }
+    
+    return result;
+    }
 
 
 
