@@ -1578,5 +1578,69 @@ Output:
     
     }
 
+Problem-24:
+
+Dothraki are planning an attack to usurp King Robert's throne. King Robert learns of this conspiracy from Raven and plans to lock the single door through which the enemy can enter his kingdom.
+
+![image](https://user-images.githubusercontent.com/75094927/155972644-a352e177-684b-44a7-acd0-4fd12d3d0bff.png)
+
+
+But, to lock the door he needs a key that is an anagram of a palindrome. He starts to go through his box of strings, checking to see if they can be rearranged into a palindrome. Given a string, determine if it can be rearranged into a palindrome. Return the string YES or NO.
+
+
+Function Description
+Complete the gameOfThrones function below.
+
+gameOfThrones has the following parameter(s):
+
+string s: a string to analyze
+Returns
+
+string: either YES or NO
+Input Format
+
+A single line which contains .
+
+
+Input:
+
+                      aaabbbb
+                      
+
+Output:
+                       
+                       YES
+                       
+💣Solution-24:
+
+
+
+               string gameOfThrones(string s) 
+             {
+                string result;
+                int flag = 0;
+                uint64_t mask = 0x0;
+                for (int i = 0; i < s.length(); i++)
+                     mask = mask ^ (1 << (s[i]-'a'));
+                if ((!mask) || (((mask & (mask - 1)) == 0)))
+                    flag = 1;
+                if(flag==0)
+                  result = "NO";
+                else
+                  result = "YES";
+       
+                return result;
+             }
+
+
+
+
+
+
+
+
+
+
+
 
 
