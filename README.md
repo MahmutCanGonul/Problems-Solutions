@@ -1847,6 +1847,97 @@ Your score will be 10-X, where X is the sum of the distances you are from expect
 
 
 
+🍎Problem-27: 
+
+Given a string, remove characters until the string is made up of any two alternating characters. When you choose a character to remove, all instances of that character must be removed. Determine the longest string possible that contains just two alternating letters.
+
+
+
+INPUT:
+
+     STDIN       Function
+     -----       --------
+     10          length of s = 10
+     beabeefeab  s = 'beabeefeab'
+
+OUTPUT:
+
+         5
+         
+💣Solution-27:
+             
+             
+             int alternate(string s) {
+        vector<char> chars;
+      vector<vector<char>> options;
+      if(s == "a")
+         return 0;
+      
+     for(int i=0; i<s.length();i++){
+          bool isHas=false;
+     for(int j=0;j<chars.size();j++){
+         if(s[i] == chars[j])
+           isHas=true;
+     }
+     if(!isHas)
+        chars.push_back(s[i]);
+     }
+
+     for(int i=0; i<chars.size();i++){
+         for(int j=0; j<chars.size();j++){
+      vector<char> get_chars;
+      get_chars.push_back(chars[i]);
+      get_chars.push_back(chars[j]);
+      options.push_back(get_chars);   
+     }
+     }
+     vector<string> words;
+    for(int i=0; i<options.size();i++){
+     //cout<<options[i][0]<<options[i][1]<<endl;
+     string constant="";
+     vector<char> get_data = options[i];
+        for(int j=0; j<s.length();j++){
+            if(s[j] == get_data[0] || s[j] == get_data[1])
+                 constant = constant + s[j];
+        }
+     words.push_back(constant);
+    }
+     for(int i=0; i<words.size();i++){
+       cout<<words[i]<<endl;
+     }
+    int result=0;
+    vector<string> mainWords;
+    vector<int> mainWordsLen;
+    for(int i=0; i<words.size();i++){
+     string word = words[i];
+     bool isRepaet=false;
+     for(int j=0; j<word.length();j++){
+         if(j!=word.length()-1){
+             if(word[j] == word[j+1]){
+                 isRepaet=true;
+                 break;
+             }
+         }
+     }
+     if(!isRepaet){
+         mainWords.push_back(word);
+         mainWordsLen.push_back(word.length());
+     }
+    }
+     sort(mainWordsLen.begin(),mainWordsLen.end());
+     for(int i=0; i<mainWords.size();i++){
+     if(mainWords[i].length() == mainWordsLen[mainWordsLen.size()-1]){
+         result = mainWords[i].length();
+         break;
+     }
+    }
+ 
+     return result;
+  
+    }
+
+
+
 
 
 
